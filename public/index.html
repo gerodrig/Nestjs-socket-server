@@ -20,10 +20,13 @@
         console.log('Disconnected from server');
     });
 
-    socket.emit('vote', {name: 'Benito'});
+    socket.on('new-message', (payload) => {
+        console.log('New message: ', payload);
+    });
 
-    socket.on('vote', (payload) => {
-        console.log('Vote: ', payload);
+    socket.on('active-videogames', (payload) => {
+        console.clear();
+        console.table(payload);
     });
 </script>
 </html>
